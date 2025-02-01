@@ -45,8 +45,32 @@ func main() {
 	fmt.Println(myArray)
 	removeLast(&myArray)
 	fmt.Println(myArray)
+
+	fmt.Println(strings.Repeat("-", 50))
+	a1 := [...]int{1,2,3}
+	removeMiddle(&a1, 1)
+	fmt.Println(a1)
+
+	fmt.Println(strings.Repeat("-", 50))
+	a2 := [...]int{1,2,3}
+	insertMiddle(&a2, 1, 55)
+	fmt.Println(a2)
 }
 
 func removeLast(a *[3]int) {
 	a[len(a)-1] = 0
+}
+
+func removeMiddle(a *[3]int, i int) {
+	for j := i+1; j < len(a); j++ {
+		a[j-1] = a[j]
+	}
+	a[len(a)-1] = 0
+}
+
+func insertMiddle(a *[3]int, idx int, v int) {
+	for i := len(a)-1; i > idx; i-- {
+		a[i] = a[i-1]
+	}
+	a[idx]=v
 }
